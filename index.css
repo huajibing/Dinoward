@@ -141,3 +141,27 @@ html, body {
   left: 0;
   right: 0;
 }
+
+#messageBox h1 {
+  font-size: 1.4em;
+}
+
+#alertBox {
+  width: 100%;
+  max-height: 20%;
+  overflow: hidden;
+  margin: 0;
+  padding: 2% 4%;
+  box-sizing: border-box;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0px 10px 20px #7f7f7f;
+  display: flex;
+  justify-content: flex-start;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+#alert {
+  margin-left: 14px;
+}

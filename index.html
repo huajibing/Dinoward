@@ -119,6 +119,11 @@
             </template>
         </div>
     </div>
+    <div style="display: block;box-sizing: border-box;text-align: center;"><img style="display: inline;width: 2em;height: 2em;cursor: pointer;" src="https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg" id="github"></div>
+    <div id="alertBox">
+        <div><img src="assets/Edward.png"></div>
+        <div id="alert">跟着来，绝对没问题！至少是个人大！！</div>
+    </div>
     <script>
         (function(){function l(a,b,c){return Function.prototype.call.apply(Array.prototype.slice,arguments)}function m(a,b,c){var e=l(arguments,2);return function(){return b.apply(a,e)}}function n(a,b){var c=new p(b);for(c.h=[a];c.h.length;){var e=c,d=c.h.shift();e.i(d);for(d=d.firstChild;d;d=d.nextSibling)1==d.nodeType&&e.h.push(d)}}function p(a){this.i=a}function q(a){a.style.display=""}function r(a){a.style.display="none"};var t=/\s*;\s*/;function u(a,b){this.l.apply(this,arguments)}u.prototype.l=function(a,b){this.a||(this.a={});if(b){var c=this.a,e=b.a;for(d in e)c[d]=e[d]}else{var d=this.a;e=v;for(c in e)d[c]=e[c]}this.a.$this=a;this.a.$context=this;this.f="undefined"!=typeof a&&null!=a?a:"";b||(this.a.$top=this.f)};var v={$default:null},w=[];function x(a){for(var b in a.a)delete a.a[b];a.f=null;w.push(a)}function y(a,b,c){try{return b.call(c,a.a,a.f)}catch(e){return v.$default}}
     u.prototype.clone=function(a,b,c){if(0<w.length){var e=w.pop();u.call(e,a,this);a=e}else a=new u(a,this);a.a.$index=b;a.a.$count=c;return a};var z;window.trustedTypes&&(z=trustedTypes.createPolicy("jstemplate",{createScript:function(a){return a}}));var A={};function B(a){if(!A[a])try{var b="(function(a_, b_) { with (a_) with (b_) return "+a+" })",c=window.trustedTypes?z.createScript(b):b;A[a]=window.eval(c)}catch(e){}return A[a]}
@@ -131,6 +136,15 @@
     if(e=c.jseval)for(d=0,g=e.length;d<g;++d)y(a,e[d],b);e=c.jsskip;if(!e||!y(a,e,b))if(c=c.jscontent){if(c=""+y(a,c,b),b.innerHTML!=c){for(;b.firstChild;)e=b.firstChild,e.parentNode.removeChild(e);b.appendChild(this.m.createTextNode(c))}}else{c=Q(this);for(e=b.firstChild;e;e=e.nextSibling)1==e.nodeType&&c.push(this.g,a,e);c.length&&P(this,c)}};function R(a){if(a.__jstcache)return a.__jstcache;var b=a.getAttribute("jstcache");return b?a.__jstcache=H[b]:M(a)}
     function S(a,b){var c=document;if(b){var e=c.getElementById(a);if(!e){e=b();var d=c.getElementById("jsts");d||(d=c.createElement("div"),d.id="jsts",r(d),d.style.position="absolute",c.body.appendChild(d));var g=c.createElement("div");d.appendChild(g);g.innerHTML=e;e=c.getElementById(a)}c=e}else c=c.getElementById(a);return c?(L(c),c=c.cloneNode(!0),c.removeAttribute("id"),c):null}function T(a,b,c){c==b.length-1?a.setAttribute("jsinstance","*"+c):a.setAttribute("jsinstance",""+c)};window.jstGetTemplate=S;window.JsEvalContext=u;window.jstProcess=function(a,b){var c=new F;L(b);c.m=b?9==b.nodeType?b:b.ownerDocument||document:document;var e=m(c,c.g,a,b),d=c.j=[],g=c.o=[];c.c=[];e();for(var h,f,k;d.length;)h=d[d.length-1],e=g[g.length-1],e>=h.length?(e=c,f=d.pop(),f.length=0,e.c.push(f),g.pop()):(f=h[e++],k=h[e++],h=h[e++],g[g.length-1]=e,f.call(c,k,h))};
     })()
+    </script>
+    <script>
+        const HIDDEN_CLASS = "hidden";
+        const alertMessage = function(content) {
+            document.getElementById("alert").textContent = content;
+        }
+        document.getElementById('github').addEventListener('click', function(){
+            window.open('https://github.com/huajibing/Dinoward');
+        })
     </script>
 </body>
 

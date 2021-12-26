@@ -993,7 +993,7 @@ Runner.prototype = {
         return;
       }
 
-      alert('1');
+      // alert('1');
 
       if (!this.crashed && !this.paused) {
         // For a11y, screen reader activation.
@@ -1003,18 +1003,19 @@ Runner.prototype = {
             (IS_IOS && e.pointerType == 'touch' &&
              document.activeElement == this.containerEl);
 
-             alert('2');
+            //  alert('2');
 
         if (Runner.keycodes.JUMP[e.keyCode] ||
             e.type === Runner.events.TOUCHSTART || isMobileMouseInput ||
             (Runner.keycodes.DUCK[e.keyCode] && this.altGameModeActive)) {
-              alert('a');
+              // alert('a');
           e.preventDefault();
           // Starting the game for the first time.
           if (!this.playing) {
             // Started by touch so create a touch controller.
             if (!this.touchController && e.type === Runner.events.TOUCHSTART) {
               this.createTouchController();
+              document.getElementById("messageBox").style.visibility = "hidden";
             }
 
             if (isMobileMouseInput) {
@@ -1300,7 +1301,7 @@ Runner.prototype = {
     this.gameOverPanel.draw(this.altGameModeActive, this.tRex);
 
     if (this.distanceRan < 8400) {
-      alert("有些崽儿哈，我提醒你，你很危险。怎么可能200分都跑不到嘛！你不是影帝是什么！！说没有时间，我给你时间没有嘛！！狗屁！！");
+      alertMessage("有些崽儿哈，我提醒你，你很危险。怎么可能200分都跑不到嘛！你不是影帝是什么！！说没有时间，我给你时间没有嘛！！狗屁！！");
     }
 
     // Update the high score.
@@ -1376,6 +1377,8 @@ Runner.prototype = {
       this.generatedSoundFx.background();
       this.containerEl.setAttribute('title', getA11yString(A11Y_STRINGS.jump));
       announcePhrase(getA11yString(A11Y_STRINGS.started));
+
+      alertMessage("话说三遍淡如水。该说的我已经说了！");
     }
   },
 
