@@ -1004,6 +1004,7 @@ Runner.prototype = {
         if (Runner.keycodes.JUMP[e.keyCode] ||
             e.type === Runner.events.TOUCHSTART || isMobileMouseInput ||
             (Runner.keycodes.DUCK[e.keyCode] && this.altGameModeActive)) {
+              alert('a');
           e.preventDefault();
           // Starting the game for the first time.
           if (!this.playing) {
