@@ -993,6 +993,8 @@ Runner.prototype = {
         return;
       }
 
+      alert('1');
+
       if (!this.crashed && !this.paused) {
         // For a11y, screen reader activation.
         const isMobileMouseInput = IS_MOBILE &&
@@ -1000,6 +1002,8 @@ Runner.prototype = {
                 e.pointerType == 'mouse' && e.target == this.containerEl ||
             (IS_IOS && e.pointerType == 'touch' &&
              document.activeElement == this.containerEl);
+
+             alert('2');
 
         if (Runner.keycodes.JUMP[e.keyCode] ||
             e.type === Runner.events.TOUCHSTART || isMobileMouseInput ||
