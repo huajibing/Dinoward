@@ -15,7 +15,7 @@
         }
 
         body {
-            --background-color: #fff;
+            --background-color: rgb(248 249 250);
             --error-code-color: var(--google-gray-700);
             --google-blue-100: rgb(210, 227, 252);
             --google-blue-300: rgb(138, 180, 248);
@@ -46,7 +46,7 @@
             background: var(--background-color);
             color: var(--text-color);
             word-wrap: break-word;
-                    }
+            }
 
             .nav-wrapper .secondary-button {
             background: var(--secondary-button-fill-color);
@@ -90,6 +90,12 @@
             }
         }
     </style>
+    <style>
+        a {
+            text-decoration: underline !important;
+            color: #0c82b3;
+        }
+    </style>
     <link rel="stylesheet" href="neterror.css">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
@@ -102,8 +108,12 @@
 
 <body id="t" class="offline">
     <div id="messageBox" class="sendmessage">
-         <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Dinoward&nbsp;&nbsp;&nbsp;按下空格键或点击恐龙开始</h1>
+         <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;"><span style="color: #0c82b3;">Dino</span><span style="color: #e8db97;">ward</span>&nbsp;&nbsp;&nbsp;按下空格键或点击屏幕开始</h1>
          <div class="niokbutton" onclick="okbuttonsend()"></div>
+    </div>
+    <div style="position: absolute;bottom: 19%;left: 0;right: 0;text-align: center;z-index: 45;">
+        <button id="aboutButton">关于</button>
+        <button id="historyButton">历史成绩</button>
     </div>
     <div id="main-frame-error" class="interstitial-wrapper">
         <div id="main-content">
@@ -119,10 +129,26 @@
             </template>
         </div>
     </div>
-    <div style="display: block;box-sizing: border-box;text-align: center;"><img style="display: inline;width: 2em;height: 2em;cursor: pointer;" src="https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg" id="github"></div>
     <div id="alertBox">
         <div><img src="assets/Edward.png"></div>
         <div id="alert">跟着来，绝对没问题！至少是个人大！！</div>
+    </div>
+    <div id="cover" style="display: none;opacity: 0;"></div>
+    <div id="messager" style="display: none;opacity: 0;">
+    </div>
+    <div id="about" style="display: none;">
+        <h1 style="font-size: 1.5em;display: inline;">关于</h1><button style="position: absolute;right: 1em;" class="closer_1">关闭</button>
+        <p>介绍见<a href="https://github.com/huajibing/Dinoward/blob/main/README.md">README.md</a></p>
+        <p style="font-size: 1.2em;font-weight: bold;">操作方法</p>
+        <p>移动端：点击恐龙开始，然后点按屏幕任意位置进行跳跃。<br>PC端：按空格键开始，然后按空格键跳跃</p>
+        <p style="font-size: 1.2em;font-weight: bold;">源码</p>
+        <div style="display: block;box-sizing: border-box;text-align: left;"><img style="display: inline;width: 2em;height: 2em;cursor: pointer;" src="https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg" id="github"></div>
+        <p style="font-size: 1.2em;font-weight: bold;">联系作者</p>
+        <a href="https://t.me/Ohwwww">Telegram@Ohwwww</a>
+    </div>
+    <div id="history" style="display: none;">
+        <h1 style="font-size: 1.5em;display: inline;">历史成绩</h1><button style="position: absolute;right: 1em;" class="closer_2">关闭</button>
+        <table class="history" style="margin-top: 1em;"></table>
     </div>
     <script>
         (function(){function l(a,b,c){return Function.prototype.call.apply(Array.prototype.slice,arguments)}function m(a,b,c){var e=l(arguments,2);return function(){return b.apply(a,e)}}function n(a,b){var c=new p(b);for(c.h=[a];c.h.length;){var e=c,d=c.h.shift();e.i(d);for(d=d.firstChild;d;d=d.nextSibling)1==d.nodeType&&e.h.push(d)}}function p(a){this.i=a}function q(a){a.style.display=""}function r(a){a.style.display="none"};var t=/\s*;\s*/;function u(a,b){this.l.apply(this,arguments)}u.prototype.l=function(a,b){this.a||(this.a={});if(b){var c=this.a,e=b.a;for(d in e)c[d]=e[d]}else{var d=this.a;e=v;for(c in e)d[c]=e[c]}this.a.$this=a;this.a.$context=this;this.f="undefined"!=typeof a&&null!=a?a:"";b||(this.a.$top=this.f)};var v={$default:null},w=[];function x(a){for(var b in a.a)delete a.a[b];a.f=null;w.push(a)}function y(a,b,c){try{return b.call(c,a.a,a.f)}catch(e){return v.$default}}
@@ -144,7 +170,23 @@
         }
         document.getElementById('github').addEventListener('click', function(){
             window.open('https://github.com/huajibing/Dinoward');
-        })
+        });
+        const messagerFold = function() {
+            document.getElementById("messager").style.opacity = 0;
+            document.getElementById("cover").style.opacity = 0;
+            alertMessage("跟着来，绝对没问题！至少是个人大！！");
+            setTimeout(function() {
+                document.getElementById("messager").style.display = "none";
+                document.getElementById("cover").style.display = "none";
+            }, 400);
+        }
+        const messagerUnfold = function() {
+            document.getElementById("messager").style.display = "block";
+            document.getElementById("cover").style.display = "block";
+            document.getElementById("messager").style.opacity = 1;
+            document.getElementById("cover").style.opacity = 1;
+        }
+        document.getElementById("cover").addEventListener('click', messagerFold);
     </script>
 </body>
 
@@ -155,7 +197,59 @@
         var box = document.getElementById("messageBox");
         box.style.display="none";
     }
-};
+    window.ActualScore = 0;
+    }
+</script>
+<script>
+    localStorage.setItem("history", localStorage.getItem("history")||"");
+    const getTimeNow = function() {
+        let date = new Date();
+        return date.getFullYear()+"/"+date.getMonth()+"/"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+    }
+    const updateHistory = function(score, time) {
+        let h = JSON.parse(localStorage.getItem("history") || "{}");
+        if ("undefined" != typeof h.main) {
+            h.main.unshift({score: score, time: time});
+        } else {
+            h = {main: [{score: score, time: time}]};
+        }
+        localStorage.setItem("history", JSON.stringify(h));
+    }
+    const getHistory = function() {
+        let h = JSON.parse(localStorage.getItem("history") || "{}");
+        if ("undefined" != typeof h.main) {
+            return h.main;
+        } else {
+            return [];
+        }
+    }
+    
+    document.getElementById("aboutButton").addEventListener("click", function(){
+        document.getElementById("messager").innerHTML = document.getElementById("about").innerHTML;
+        document.getElementsByClassName("closer_1")[0].addEventListener("click", messagerFold);
+        alertMessage("不要迷恋哥，哥只是个传说");
+        messagerUnfold();
+    });
+    document.getElementById("historyButton").addEventListener("click", function(){
+        document.getElementById("messager").innerHTML = document.getElementById("history").innerHTML;
+        let hi = getHistory();
+    if (hi != []){
+        for (let i = 1; i<=hi.length;i++) {
+            let tr = document.createElement("tr");
+            let th1 = document.createElement("th");
+            let th2 = document.createElement("th");
+            th1.textContent = hi[i-1].score;
+            th1.style.color = "red";
+            th2.textContent = hi[i-1].time;
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            document.getElementsByClassName("history")[0].appendChild(tr);
+        }
+    }
+    document.getElementsByClassName("closer_2")[0].addEventListener("click", messagerFold);
+    alertMessage("你要看数据，那我就给你看数据！！");
+        messagerUnfold();
+    });
 </script>
     
 </html>

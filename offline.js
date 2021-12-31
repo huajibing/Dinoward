@@ -1300,12 +1300,16 @@ Runner.prototype = {
 
     this.gameOverPanel.draw(this.altGameModeActive, this.tRex);
 
-    if (this.distanceRan < 8400) {
+    window.ActualScore = Math.round(Math.ceil(this.distanceRan) * 0.025);
+    updateHistory(window.ActualScore, getTimeNow());
+    if (window.ActualScore < 200) {
       alertMessage("有些崽儿哈，我提醒你，你很危险。怎么可能200分都跑不到嘛！你不是影帝是什么！！说没有时间，我给你时间没有嘛！！狗屁！！");
-    } else if (this.distanceRan > 8400&&this.distanceRan < 42000) {
-      alertMessage("分数就是一个阿拉伯数字。跟着来，没问题！自带2000分气质！！");
-    } else {
+    } else if (window.ActualScore >= 200 && window.ActualScore < 1000) {
+      alertMessage("分数就是一个阿拉伯数字。跟着来，没问题！自带1000分气质！！");
+    } else if (window.ActualScore >= 1000 && window.ActualScore < 2000) {
       alertMessage("是个人物哦");
+    } else {
+      alertMessage("强者恒强！！")
     }
 
     // Update the high score.
